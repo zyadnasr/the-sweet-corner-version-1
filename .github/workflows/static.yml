@@ -2,8 +2,8 @@ name: Deploy Vite App to GitHub Pages
 
 on:
 push:
-branches: ["main"]
-
+branches:
+- main
 workflow_dispatch:
 
 permissions:
@@ -12,7 +12,7 @@ pages: write
 id-token: write
 
 concurrency:
-group: "pages"
+group: pages
 cancel-in-progress: false
 
 jobs:
@@ -39,15 +39,21 @@ steps:
 ```
 
 deploy:
-environment:
-name: github-pages
-url: ${{ steps.deployment.outputs.page_url }}
+needs: build
 
 ```
-needs: build
+permissions:
+  pages: write
+  id-token: write
+
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+
 runs-on: ubuntu-latest
 
 steps:
-  - id: deployment
+  - name: Deploy to GitHub Pages
+    id: deployment
     uses: actions/deploy-pages@v4
 ```
