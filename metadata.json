@@ -1,0 +1,6 @@
+{
+  "name": "The sweet corner",
+  "description": "Freshly Baked Happiness Every Day - Local Restaurant/Bakery landing page.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
